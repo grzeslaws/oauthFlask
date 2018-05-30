@@ -1,0 +1,40 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+{% include 'includes/_messages.html' %}
+<nav>
+    <h1>Flaskr</h1>
+    <ul>
+        <li>
+            <a href="{{ url_for('index') }}">Home</a>
+        </li>
+        <li>
+            <a href="{{ url_for('register') }}">Register</a>
+        </li>
+        {% if current_user.is_anonymous %}
+        <li>
+            <a href="{{ url_for('login') }}">Log In</a>
+        </li>
+        {% endif %} {% if current_user.is_authenticated %}
+        <li>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </li>
+        {% endif %}
+        <li>
+            <a href="{{ url_for('admin') }}">Admin</a>
+        </li>
+        <li>
+            <a href="{{ url_for('add_post') }}">Add post</a>
+        </li>
+        <li>
+            <a href="{{ url_for('posts') }}">Posts list</a>
+        </li>
+    </ul>
+</nav>
+<section class="content">
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+
+    {% block content %}{% endblock %}
+</section>

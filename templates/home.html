@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Home{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+{% if current_user.is_authenticated %}
+  <h2>User name is: {{ current_user.name }}</h2>
+{% endif %}
+{% endblock %}
+
+
+
+  
+
